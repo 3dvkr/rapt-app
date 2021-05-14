@@ -1,0 +1,38 @@
+<%- include('partials/header.ejs') %>
+<main>
+    <div>
+        <section>
+            <% if (locals.messages.errors) { %>
+                <% messages.errors.forEach( el => { %>
+                    <div><%= el.msg %></div>
+                <% }) %>    
+            <% } %>
+            <% if (locals.messages.info) { %>
+                <% messages.info.forEach( el => { %>
+                    <div><%= el.msg %></div>
+                <% }) %>    
+            <% } %>
+            <form action="/signup" method="POST">
+                <div>
+                    <label for="userName">User Name</label>
+                    <input type="text" id="userName" name="userName">
+                  </div>
+                <div>
+                  <label for="inputEmail">Email address</label>
+                  <input type="email" id="inputEmail" aria-describedby="emailHelp" name="email">
+                  <div id="emailHelp">We'll never share your email with anyone else.</div>
+                </div>
+                <div>
+                  <label for="password">Password</label>
+                  <input type="password" id="password" name="password">
+                </div>
+                <div>
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword">
+                  </div>
+                <button type="submit">Submit</button>
+              </form>
+        </section>
+    </div>
+</main>    
+<%- include('partials/footer.ejs') %>

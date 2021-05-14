@@ -1,0 +1,34 @@
+<%- include('partials/header.ejs') %>
+<main>
+    <div>
+      <section>
+        <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+            <div><%= el.msg %></div>
+        <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+        messages.info.forEach( el => { %>
+        <div><%= el.msg %></div>
+        <% }) %> <% } %>
+        <form action="/login" method="POST">
+          <div>
+            <label for="inputEmail">Email address</label>
+            <input
+              type="email"
+              id="inputEmail"
+              aria-describedby="emailHelp"
+              name="email"
+            />
+          </div>
+          <div>
+            <label for="inputPassword">Password</label>
+            <input
+              type="password"
+              id="inputPassword"
+              name="password"
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+    </div>
+  </main>    
+<%- include('partials/footer.ejs') %>
