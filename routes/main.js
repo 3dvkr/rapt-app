@@ -4,7 +4,13 @@ const router = express.Router();
 const homeController = require("../controllers/home");
 const authController = require("../controllers/auth");
 
+const { ensureAuth, ensureGuest } = require("../middleware/auth");
+
 router.get("/", homeController.hello);
+
+router.get('/main', ensureAuth, (req, res) => {
+    res.send('on /main')
+})
 
 router.get("/login", authController.getLogin);
 router.post("/login", authController.postLogin);
