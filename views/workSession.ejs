@@ -1,0 +1,21 @@
+<%- include('partials/header')%>
+<main>
+    <form action="/workSession" method="POST">
+        <div id="sessionChoice">
+            <label class="selected" for="workSession">Work</label>
+            <input type="radio" id="workSelect" name="sessionType" value="work" checked>
+            <label for="breakSession">Break</label>
+            <input type="radio" id="breakSelect" name="sessionType" value="break">
+        </div>
+        <div id="setTime">
+            <label for="sessionTimer">Set Timer </label>
+            <input type="number" id="sessionTimer" name="duration" min=0 max=60>
+            <button id="startBtn">Start Timer</button>
+            <p id="sessionInfo">Session Info</p>
+            <label for="memo">Add Memo?</label>
+            <input type="text id="memo" name="memo" placeholder="(optional)">
+            <button type="submit" id="submitBtn" class="hide">Submit Session</button>
+        </div>
+    </form>
+</main>
+<%- include('partials/footer')%>
