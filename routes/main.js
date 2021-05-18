@@ -9,11 +9,8 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 router.get("/", homeController.hello);
 
-router.get('/main', ensureAuth, timersController.workSession
-// (req, res) => {
-    // res.send('on /main')
-// }
-)
+router.get('/main', ensureAuth, timersController.workSession)
+router.post('/main', ensureAuth, timersController.postWorkSession)
 
 
 router.get("/login", authController.getLogin);
