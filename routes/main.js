@@ -10,6 +10,7 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 router.get("/", homeController.hello);
 
 router.get('/main', ensureAuth, timersController.workSession)
+router.get('/today', ensureAuth, timersController.getTodaysTimers)
 router.post('/main', ensureAuth, timersController.postWorkSession)
 
 

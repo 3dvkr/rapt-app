@@ -1,0 +1,14 @@
+<%- include('partials/header') %>
+<main>
+    <section>
+        <ul>
+            <% for (let i = 0; i < todaysTimers.length; i++) { %>
+                <li>
+                    <%= `${todaysTimers[i].sessionType}: ${todaysTimers[i].duration} minutes` %><%= todaysTimers[i].memo.length > 0 ? `${todaysTimers[i].memo}` : '' %>
+                </li>
+            <% } %>
+        </ul>
+    </section>
+</main>
+
+<%- include('partials/footer') %>
