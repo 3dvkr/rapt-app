@@ -15,31 +15,20 @@ module.exports = {
     });
     res.redirect("/workSession");
   },
-  getTodaysTimers: (req, res) => {
-    const todaysTimers = [
-      {
-        user: 1234567,
-        sessionType: "break",
-        duration: 5,
-        memo: "",
-        createdAt: "2021-05-19T12:14:06.221Z",
-      },
-      {
-        user: 1234567,
-        sessionType: "work",
-        duration: 30,
-        memo: "",
-        createdAt: "2021-05-19T12:19:06.221Z",
-      },
-      {
-        user: 1234567,
-        sessionType: "break",
-        duration: 5,
-        memo: "",
-        createdAt: "2021-05-19T12:54:06.221Z",
-      },
-    ];
-    res.render('today.ejs', {todaysTimers})
-    // res.send('testing from today')
+  getTodaysTimers: async (req, res) => {
+    try {
+      const now = new Date();
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const timersToday = await Timer.find({
+        user: req.user.id,
+        createdAt: { $gte: today },
+      });
+      // console.log(today, "getTodaysTimers controller", timersToday);
+      res.render("today.ejs", {
+        timersToday,
+      });
+    } catch (err) {
+      console.log(err);
+    } 
   },
 };
