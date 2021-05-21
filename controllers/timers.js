@@ -31,4 +31,14 @@ module.exports = {
       console.log(err);
     } 
   },
+  getHistory: async (req, res) => {
+      try {
+        const history = await Timer.find({
+            user: req.user.id
+        })
+        res.render('history', {history})
+      } catch (err) {
+          console.log(err)
+      }
+  }
 };

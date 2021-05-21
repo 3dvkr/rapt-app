@@ -11,6 +11,7 @@ router.get("/", homeController.hello);
 
 router.get('/main', ensureAuth, timersController.workSession)
 router.get('/today', ensureAuth, timersController.getTodaysTimers)
+router.get('/history', ensureAuth, timersController.getHistory)
 router.post('/main', ensureAuth, timersController.postWorkSession)
 
 
