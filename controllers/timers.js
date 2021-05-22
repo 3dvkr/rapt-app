@@ -33,9 +33,10 @@ module.exports = {
   },
   getHistory: async (req, res) => {
       try {
-        const history = await Timer.find({
+        let history = await Timer.find({
             user: req.user.id
         })
+        history = history.sort((a,b) => b.createdAt - a.createdAt);
         res.render('history', {history})
       } catch (err) {
           console.log(err)
