@@ -1,7 +1,16 @@
 <%- include('partials/header') %>
 <main>
-    <% for (let i = 0; i < history.length; i++) { %>
-        <p><%= history[i] %></p>
-    <% } %>
+    <ul>
+        <% let sessionDays = [...new Set(history.map(el => el.createdAt.toDateString()))] %>
+        <% for (let day of sessionDays) { %>
+            <h2><%= day %></h2>
+            <ul>
+                <% let sessionList = [...new Set(history.filter(el => el.createdAt.toDateString() == day))] %>
+                <% for (let session of sessionList) { %>
+                    <li><%= session %></li>
+                <% } %>
+            </ul>
+        <% } %>
+    </ul>
 </main>
 <%- include('partials/footer') %>
