@@ -1,16 +1,28 @@
 <%- include('partials/header') %>
 <main>
-    <ul>
-        <% let sessionDays = [...new Set(history.map(el => el.createdAt.toDateString()))] %>
-        <% for (let day of sessionDays) { %>
-            <h2><%= day %></h2>
-            <ul>
-                <% let sessionList = [...new Set(history.filter(el => el.createdAt.toDateString() == day))] %>
-                <% for (let session of sessionList) { %>
-                    <%= `${session.sessionType}: ${session.duration} minutes` %><%= session.memo.length > 0 ? `${session.memo}` : '' %>
-                <% } %>
-            </ul>
-        <% } %>
-    </ul>
+    <section id="summary">
+        <h2>Summary</h2>
+        <% let allMemos = [...new Set(history.map(el => el.memo))].filter(memo => typeof memo == 'string' && memo.length > 0) %>
+        <p>Total minutes logged per memo/goal</p>
+        <ul>
+            <% for (let memo of allMemos) { %>
+                <li><%= memo %>: <%=  history.filter(el => el.memo == memo).reduce((acc, el) => acc + el.duration ,0)%> minutes</li>
+            <% } %>
+        </ul>
+    </section>
+    <section id="allHistory">
+        <ul>
+            <% let sessionDays = [...new Set(history.map(el => el.createdAt.toDateString()))] %>
+            <% for (let day of sessionDays) { %>
+                <h2><%= day %></h2>
+                <ul>
+                    <% let sessionList = [...new Set(history.filter(el => el.createdAt.toDateString() == day))] %>
+                    <% for (let session of sessionList) { %>
+                        <li><%= `${session.sessionType}: ${session.duration} minutes` %> <%= `${session.memo}`%></li>
+                    <% } %>
+                </ul>
+            <% } %>
+        </ul>
+    </section>
 </main>
 <%- include('partials/footer') %>
