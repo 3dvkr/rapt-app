@@ -18,7 +18,7 @@
                 <ul>
                     <% let sessionList = [...new Set(history.filter(el => el.createdAt.toDateString() == day))] %>
                     <% for (let session of sessionList) { %>
-                        <li><%= `${session.sessionType}: ${session.duration} minutes` %> <%= `${session.memo}`%></li>
+                        <li><%= `${session.sessionType}: ${session.duration} minutes` %> <%= session.memo && `[${session.memo}]`%></li>
                     <% } %>
                 </ul>
             <% } %>
