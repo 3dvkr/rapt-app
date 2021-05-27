@@ -2,9 +2,9 @@
 <main>
     <section>
         <ul>
-            <% for (let i = 0; i < todaysTimers.length; i++) { %>
+            <% for (let i = 0; i < timersToday.length; i++) { %>
                 <li>
-                    <%= `${todaysTimers[i].sessionType}: ${todaysTimers[i].duration} minutes` %><%= todaysTimers[i].memo.length > 0 ? `${todaysTimers[i].memo}` : '' %>
+                    <%= `${timersToday[i].sessionType}: ${timersToday[i].duration} minutes` %><%= timersToday[i].memo.length > 0 ? `${timersToday[i].memo}` : '' %>
                 </li>
             <% } %>
         </ul>
