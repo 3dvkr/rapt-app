@@ -41,6 +41,11 @@ if (startBtn) {
         }
         seconds = seconds < 10 ? "0" + seconds : seconds;
         document.getElementById("countdownP").textContent = `${minutes}:${seconds}`;
+        if (minutes == 0 && seconds == 0) {
+          clearInterval(countdown);
+          document.getElementById("sessionInfo").textContent = `You had a ${timeString}-minute long ${sessionType} session. Add to history?`;
+          document.getElementById("submitBtn").classList.remove("hide");
+        }
       }, 1000);
     }
   });
