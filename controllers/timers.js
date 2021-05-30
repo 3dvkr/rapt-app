@@ -42,5 +42,8 @@ module.exports = {
       } catch (err) {
           console.log(err)
       }
+  },
+  updateWorkSession: (req, res) => {
+    console.log('update sent');
   }
 };

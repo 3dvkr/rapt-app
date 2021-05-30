@@ -13,6 +13,7 @@ router.get('/main', ensureAuth, timersController.workSession)
 router.get('/today', ensureAuth, timersController.getTodaysTimers)
 router.get('/history', ensureAuth, timersController.getHistory)
 router.post('/main', ensureAuth, timersController.postWorkSession)
+router.patch('/update/:id', ensureAuth, timersController.updateWorkSession)
 
 
 router.get("/login", authController.getLogin);

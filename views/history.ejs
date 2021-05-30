@@ -10,6 +10,12 @@
             <% } %>
         </ul>
     </section>
+    <section id="updateDetailsBox" class="hide">
+        <label for="newMemo">New memo</label><input id="newMemo" type="text">
+        <label for="newDuration">New duration</label><input id="newDuration" type="number" min=0 max=60>
+        <button id="updateMemoBtn">Send update</button>
+        <p class='hide' id="updateErrorP">Please select a session to update, and fill in at least one the two fields.</p>
+    </section>
     <section id="allHistory">
         <ul>
             <% let sessionDays = [...new Set(history.map(el => el.createdAt.toDateString()))] %>
@@ -18,7 +24,11 @@
                 <ul>
                     <% let sessionList = [...new Set(history.filter(el => el.createdAt.toDateString() == day))] %>
                     <% for (let session of sessionList) { %>
-                        <li><%= `${session.sessionType}: ${session.duration} minutes` %> <%= session.memo && `[${session.memo}]`%></li>
+                        <li
+                            data-id="<%= session._id %>"
+                        >
+                            <%= `${session.sessionType}: ${session.duration} minutes` %> <%= session.memo && `[${session.memo}]`%> <span class="update">Update</span>
+                        </li>
                     <% } %>
                 </ul>
             <% } %>

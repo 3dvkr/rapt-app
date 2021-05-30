@@ -1,10 +1,18 @@
 <%- include('partials/header') %>
 <main>
+    <section id="updateDetailsBox" class="hide">
+        <label for="newMemo">New memo</label><input id="newMemo" type="text">
+        <label for="newDuration">New duration</label><input id="newDuration" type="number" min=0 max=60>
+        <button id="updateMemoBtn">Send update</button>
+        <p class='hide' id="updateErrorP">Please select a session to update, and fill in at least one the two fields.</p>
+    </section>
     <section>
         <ul>
             <% for (let i = 0; i < timersToday.length; i++) { %>
-                <li>
-                    <%= `${timersToday[i].sessionType}: ${timersToday[i].duration} minutes` %><%= timersToday[i].memo.length > 0 ? `${timersToday[i].memo}` : '' %>
+                <li
+                    data-id="<%= timersToday[i]._id %>"
+                >
+                    <%= `${timersToday[i].sessionType}: ${timersToday[i].duration} minutes` %><%= timersToday[i].memo &&`${timersToday[i].memo}` %> <span class="update">Update</span>
                 </li>
             <% } %>
         </ul>
