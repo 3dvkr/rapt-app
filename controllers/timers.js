@@ -43,7 +43,24 @@ module.exports = {
           console.log(err)
       }
   },
-  updateWorkSession: (req, res) => {
-    console.log('update sent');
+  updateWorkSession: async (req, res) => {
+    try {
+      const timer = await Timer.findOne({ _id: req.params.id, user: req.user.id })
+      console.log('PATCH ATTEMPT', req.body.memo, req.body.duration)
+  
+      if (req.body.memo) {
+        timer.memo = req.body.memo
+      }
+  
+      if (req.body.duration) {
+        timer.duration = req.body.duration
+      }
+  
+      await timer.save()
+      res.send(timer)
+    } catch {
+      res.status(404)
+      res.send({ error: "Post doesn't exist." })
+    }
   }
 };
