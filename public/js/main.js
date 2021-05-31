@@ -54,6 +54,7 @@ if (startBtn) {
 // update existing session records:
 document.querySelectorAll(".update").forEach((el) =>
   el.addEventListener("click", (e) => {
+    document.getElementById('updateDetailsBox').classList.remove('hide')
 
     let fetchBodyObj = {};
     
@@ -70,7 +71,7 @@ document.querySelectorAll(".update").forEach((el) =>
           headers: { "Content-type": "application/json" },
           body: JSON.stringify(fetchBodyObj),
         }).then((res) => {  
-          // window.location.reload();
+          window.location.reload();
         })
       } else {
         document.getElementById('updateErrorP').classList.remove('hide')
