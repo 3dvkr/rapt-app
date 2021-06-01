@@ -14,6 +14,7 @@ const TimerSchema = new mongoose.Schema({
   sessionType: {
       type: String,
       default: "work",
+      enum: ["work", "break"],
       required: true,
   },
   duration: {

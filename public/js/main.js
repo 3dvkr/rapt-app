@@ -54,7 +54,8 @@ if (startBtn) {
 // update existing session records:
 document.querySelectorAll(".update").forEach((el) =>
   el.addEventListener("click", (e) => {
-    document.getElementById('updateDetailsBox').classList.remove('hide')
+    document.getElementById('updateDetailsBox').classList.remove('hide');
+    document.getElementById('updateErrorP').classList.add('hide')
 
     let fetchBodyObj = {};
     
