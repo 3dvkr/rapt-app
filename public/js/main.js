@@ -80,3 +80,15 @@ document.querySelectorAll(".update").forEach((el) =>
     })
   })
 );
+
+document.querySelectorAll(".delete").forEach((el) =>
+  el.addEventListener("click", (e) => {
+    if (e.target) {
+      fetch(`/delete/${e.target.parentNode.dataset.id}`, {
+        method: "DELETE",
+      }).then((res) => {
+        window.location.reload();
+      });
+    }
+  })
+);

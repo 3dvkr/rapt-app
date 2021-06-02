@@ -62,5 +62,8 @@ module.exports = {
       res.status(404)
       res.send({ error: "Post doesn't exist." })
     }
+  },
+  deleteWorkSession: (req, res) => {
+    console.log('delete req controller')
   }
 };

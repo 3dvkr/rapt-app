@@ -14,6 +14,7 @@ router.get('/today', ensureAuth, timersController.getTodaysTimers)
 router.get('/history', ensureAuth, timersController.getHistory)
 router.post('/main', ensureAuth, timersController.postWorkSession)
 router.patch('/update/:id', ensureAuth, timersController.updateWorkSession)
+router.delete('/delete/:id', ensureAuth, timersController.deleteWorkSession)
 
 
 router.get("/login", authController.getLogin);
