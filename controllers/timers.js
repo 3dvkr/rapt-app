@@ -63,7 +63,13 @@ module.exports = {
       res.send({ error: "Post doesn't exist." })
     }
   },
-  deleteWorkSession: (req, res) => {
-    console.log('delete req controller')
+  deleteWorkSession: async (req, res) => {
+    try {
+      await Timer.deleteOne({ _id: req.params.id, user: req.user.id })
+      res.status(204).send()
+    } catch {
+      res.status(404)
+      res.send({ error: "Post doesn't exist" })
+    }
   }
 };
