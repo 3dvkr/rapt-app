@@ -43,6 +43,9 @@ if (startBtn) {
         document.getElementById("countdownP").textContent = `${minutes}:${seconds}`;
         if (minutes == 0 && seconds == 0) {
           clearInterval(countdown);
+          if(Notification.permission === 'granted') {
+            createNotification();
+          }
           document.getElementById("sessionInfo").textContent = `You had a ${timeString}-minute long ${sessionType} session. Add to history?`;
           document.getElementById("submitBtn").classList.remove("hide");
         }
