@@ -14,7 +14,7 @@ module.exports = {
       duration: req.body.duration,
       memo: req.body.memo,
     });
-    res.redirect("/workSession");
+    res.redirect("/main");
   },
   getTodaysTimers: async (req, res) => {
     try {

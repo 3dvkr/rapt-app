@@ -1,6 +1,6 @@
 <%- include('partials/header')%>
 <main>
-    <form action="/workSession" method="POST">
+    <form action="/main" method="POST">
         <div id="sessionChoice">
             <label class="selected" for="workSession">Work</label>
             <input type="radio" id="workSelect" name="sessionType" value="work" checked>
@@ -22,4 +22,6 @@
     </div>
     <button id="enable" type="button">Enable Notifications</button>
 </main>
+<script src="js/notifications.js"></script>
+<script src="js/main.js"></script>
 <%- include('partials/footer')%>
