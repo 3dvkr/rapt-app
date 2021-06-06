@@ -12,7 +12,7 @@
                 <li
                     data-id="<%= timersToday[i]._id %>"
                 >
-                    <%= `${timersToday[i].sessionType}: ${timersToday[i].duration} minutes` %><%= timersToday[i].memo &&`${timersToday[i].memo}` %> <span class="update">Update</span> <span class="delete">Delete</span>
+                    <%= `${timersToday[i].sessionType}: ${timersToday[i].duration} ${timersToday[i].duration == 1 ? 'minute' : 'minutes'}` %><%= timersToday[i].memo &&`${timersToday[i].memo}` %> <span class="update">Update</span> <span class="delete">Delete</span>
                 </li>
             <% } %>
         </ul>

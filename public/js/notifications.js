@@ -62,7 +62,6 @@ function createNotification() {
         // icon: img 
     });
 
-  // we need to update the value of notified to "yes" in this particular data object, so the notification won't be set off on it again
 }
 
 
