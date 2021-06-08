@@ -53,11 +53,31 @@ table {
     box-sizing: inherit;
 }
 
-main {
+/* LAYOUT -------------------- */
+
+main, header {
     max-width: 650px;
     margin: 0 auto;
 }
 
-.hide {
+form {margin: 2rem;}
+
+form, #setTime {
+	display: flex;
+    flex-flow: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.hide, input[type="radio"]{
     display: none;
+}
+
+
+/* STYLES -------------------- */
+#sessionChoice {
+    font-size: xx-large;
+}
+.selected {
+    border: 1px outset gray;
 }
