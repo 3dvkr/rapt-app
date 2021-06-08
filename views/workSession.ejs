@@ -2,11 +2,16 @@
 <main>
     <form action="/main" method="POST">
         <div id="sessionChoice">
-            <label class="selected" for="workSelect">Work</label>
-            <input type="radio" id="workSelect" name="sessionType" value="work" checked>
-            <label for="breakSelect">Break</label>
-            <input type="radio" id="breakSelect" name="sessionType" value="break">
+            <div id="workBlock">
+                <label class="selected" for="workSelect">Work</label>
+                <input type="radio" id="workSelect" name="sessionType" value="work" checked>
+            </div>
+            <div id="breakBlock">
+                <label for="breakSelect">Break</label>
+                <input type="radio" id="breakSelect" name="sessionType" value="break">
+            </div>
         </div>
+        
         <div id="setTime">
             <label for="sessionTimer">Set Timer </label>
             <input type="number" id="sessionTimer" name="duration" min=0 max=60>

@@ -4,13 +4,13 @@ let sessionType;
 inputs.forEach((el) =>
   el.addEventListener("click", () => {
     Array.from(inputs).forEach((el) => {
-      el.parentNode.children[1].classList.remove("selected");
+      el.parentNode.children[0].classList.remove("selected");
     });
 
     Array.from(inputs)
       .filter((el) => el.checked)
       .forEach((el) => {
-        el.parentNode.children[1].classList.add("selected");
+        el.parentNode.children[0].classList.add("selected");
         let duration = document.querySelector('input[name="duration"]');
         duration.focus();
         sessionType = el.value;
