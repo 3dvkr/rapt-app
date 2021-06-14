@@ -5,6 +5,8 @@ const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const flash = require("express-flash");
+const logger = require("morgan");
+
 
 const connectDB = require("./config/database");
 
@@ -18,6 +20,8 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(logger("dev"));
+
 
 app.use(
   session({

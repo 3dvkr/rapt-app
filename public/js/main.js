@@ -1,8 +1,9 @@
 // Default time for session types:
 let inputs = document.querySelectorAll('input[name="sessionType"]');
-let sessionType;
+let sessionType = 'work';
 inputs.forEach((el) =>
   el.addEventListener("click", () => {
+    document.getElementById('startBtn').classList.remove("hide");
     Array.from(inputs).forEach((el) => {
       el.parentNode.children[0].classList.remove("selected");
     });
@@ -52,4 +53,16 @@ if (startBtn) {
       }, 1000);
     }
   });
+}
+
+function check(){
+  var radios = document.getElementsByName("input");
+
+  for (var i = 0, len = radios.length; i < len; i++) {
+       if (radios[i].checked) {
+           return true;
+       }
+  }
+
+  return false;
 }

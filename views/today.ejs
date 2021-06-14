@@ -1,5 +1,6 @@
 <%- include('partials/header') %>
 <main>
+    <h2>Today's timers:</h2>
     <section id="updateDetailsBox" class="hide">
         <label for="newMemo">New memo</label><input id="newMemo" type="text">
         <label for="newDuration">New duration</label><input id="newDuration" type="number" min=0 max=60>
@@ -12,7 +13,7 @@
                 <li
                     data-id="<%= timersToday[i]._id %>"
                 >
-                    <%= `${timersToday[i].sessionType}: ${timersToday[i].duration} ${timersToday[i].duration == 1 ? 'minute' : 'minutes'}` %><%= timersToday[i].memo &&`${timersToday[i].memo}` %> <span class="update">Update</span> <span class="delete">Delete</span>
+                    <%= `${timersToday[i].sessionType}: ${timersToday[i].duration} ${timersToday[i].duration == 1 ? 'minute' : 'minutes'}` %> -- <%= timersToday[i].memo &&`${timersToday[i].memo}` %> <span class="update">Update</span> <span class="delete">Delete</span>
                 </li>
             <% } %>
         </ul>
