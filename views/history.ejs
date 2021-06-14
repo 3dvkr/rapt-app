@@ -4,11 +4,26 @@
         <h2>Summary</h2>
         <% let allMemos = [...new Set(history.map(el => el.memo))].filter(memo => typeof memo == 'string' && memo.length > 0) %>
         <p>Total minutes logged per memo/goal</p>
+        <!---
         <ul>
             <% for (let memo of allMemos) { %>
                 <li><%= memo %>: <%=  history.filter(el => el.memo == memo).reduce((acc, el) => acc + el.duration ,0)%> minutes</li>
             <% } %>
         </ul>
+        -->
+        <section id="plot">
+            <section id="labelSide">
+                <% for (let item of data) { %>
+                    <div class="barLabels" class="bar"><%= item.memo %></div>
+                <% } %>
+            </section>
+            <section id="barSide" >
+                <% for (let item of data) { %>
+                    <% let memo = item.memo %>
+                    <div id=`${<%= memo %>}` class="bar"><%= item.duration %></div>
+                <% } %>
+            </section>
+        </section>
     </section>
     <section id="updateDetailsBox" class="hide">
         <label for="newMemo">New memo</label><input id="newMemo" type="text">
@@ -27,7 +42,7 @@
                         <li
                             data-id="<%= session._id %>"
                         > 
-                            <%= `${session.sessionType}: ${session.duration} ${session.duration == 1 ? 'minute' : 'minutes'}` %> <%= session.memo && `[${session.memo}]`%> <span class="update">Update</span> <span class="delete">Delete</span>
+                            <%= `${session.sessionType}: ${session.duration} ${session.duration == 1 ? 'minute' : 'minutes'}` %> <%= session.memo && `[${session.memo}]`%> <a href="#updateDetailsBox"><span class="update">Update</span></a> <span class="delete">Delete</span>
                         </li>
                     <% } %>
                 </ul>
@@ -35,5 +50,6 @@
         </ul>
     </section>
 </main>
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="js/updateDelete.js"></script>
 <%- include('partials/footer') %>

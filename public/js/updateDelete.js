@@ -39,3 +39,16 @@ document.querySelectorAll(".delete").forEach((el) =>
     }
   })
 );
+
+
+let barData = Array.from(document.querySelectorAll(".bar")).map(el => +el.textContent);
+console.log("max: ", barData);
+
+setTimeout(() => {
+  d3.selectAll("div.bar")
+    .data(barData)
+    .text((d) => `${d} mins`)
+    .style("width", (d) => `${(d / Math.max(...barData)) * 100}%`)
+    // .style("transition", (d) => `width 1s ease-out 0.1s`);
+    // transition: width 2s ease-out;
+}, 0);
