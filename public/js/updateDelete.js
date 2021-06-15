@@ -1,5 +1,3 @@
-console.log('testing-----')
-let eventName
 // update existing session records:
 document.querySelectorAll(".update").forEach((el) =>
   el.addEventListener("click", (e) => {
@@ -9,7 +7,6 @@ document.querySelectorAll(".update").forEach((el) =>
     let fetchBodyObj = {};
 
     document.getElementById("updateMemoBtn").addEventListener("click", () => {
-      eventName = e.target;
       const newMemo = document.getElementById("newMemo").value;
       const newDuration = document.getElementById("newDuration").value;
       if (newMemo) {
@@ -26,7 +23,7 @@ document.querySelectorAll(".update").forEach((el) =>
           headers: { "Content-type": "application/json" },
           body: JSON.stringify(fetchBodyObj),
         }).then((res) => {
-          // window.location.reload();
+          window.location.reload();
         })
       } else {
         document.getElementById("updateErrorP").classList.remove("hide");
@@ -57,7 +54,5 @@ if (barData.length > 0) {
       .data(barData)
       .text((d) => `${d} mins`)
       .style("width", (d) => `${(d / Math.max(...barData)) * 100}%`);
-    // .style("transition", (d) => `width 1s ease-out 0.1s`);
-    // transition: width 2s ease-out;
   }, 0);
 }
