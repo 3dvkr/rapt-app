@@ -44,15 +44,15 @@ document.querySelectorAll(".delete").forEach((el) =>
   })
 );
 
-let barData = Array.from(document.querySelectorAll(".bar")).map(
-  (el) => +el.textContent
+let barData = Array.from(document.querySelectorAll(".bartext")).map(
+  (el) => +el.textContent.slice(0, -5)
 );
+console.log(barData)
 
 if (barData.length > 0) {
   setTimeout(() => {
     d3.selectAll("div.bar")
       .data(barData)
-      .text((d) => `${d} mins`)
-      .style("width", (d) => `${(d / Math.max(...barData)) * 100}%`);
+      .style("width", (d) => `${(d / Math.max(...barData)) * 60}%`);
   }, 0);
 }

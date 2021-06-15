@@ -66,6 +66,8 @@ table {
 main, header {
     max-width: 650px;
     margin: 0 auto;
+	padding: 1rem;
+
 }
 
 form {margin: 2rem;}
@@ -77,30 +79,49 @@ form, #setTime {
 	align-items: center;
 }
 
-div > * {margin: 0.25rem;}
+label, button {
+	margin: 0.25rem;
+	padding: 0.25rem;
+}
+
+/* div > * {margin: 0.25rem;} */
 
 #plot div {
     height: 20px;
-    border: 1px solid var(--dark-accent);
-    margin: 1rem 0;
+}
+
+.bar-container, .barLabels {
+	margin: 1rem 0.5rem;
+}
+.bar {
+	border: 1px solid var(--dark-accent);
+}
+.bartext {
+	padding-left: 1rem;
 }
 
 #plot {
-	width: 60%;
+	width: 90%;
 	margin: 0 auto;
     display: flex;
 }
 
-#plot > * {
-    padding: 1%;
-}
 
 #barSide {
     flex: 1 1 50%;
     text-align: right;
 }
-#barSide div {
-    padding-right: 0.5rem;
+
+.bar-container, header > ul{
+	display: flex;
+	align-items:center;
+}
+header > ul {justify-content: space-evenly;}
+
+/* #barSide div */
+div.bar {
+    /* padding-right: 0.5rem; */
+	background-color: var(--light-accent);
     width: 50%;
     transition: width 1s ease-out;
 }
@@ -112,11 +133,9 @@ div > * {margin: 0.25rem;}
 
 /* STYLES -------------------- */
 html{scroll-behavior: smooth;}
-* {border-radius: 1rem;}
+* {border-radius: 0.01rem;}
 main {
 	border: 10px double var(--main-accent);
-	margin: 1rem;
-	padding: 1rem;
 }
 
 a {
@@ -144,4 +163,13 @@ input[type="radio"] {
  
 .hide {
     display: none;
+}
+
+
+
+@media (min-width: 630px) {
+
+	#plot {
+		width: 60%;
+	}
 }

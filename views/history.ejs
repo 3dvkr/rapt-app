@@ -11,10 +11,12 @@
                     <div class="barLabels"><%= item.memo %></div>
                 <% } %>
             </section>
-            <section id="barSide" >
+            <section id="barSide">
                 <% for (let item of data) { %>
-
-                    <div class="bar"><%= item.duration %></div>
+                    <div class="bar-container">
+                        <div class="bar"></div>
+                        <div class="bartext"><%= `${item.duration} mins` %></div>
+                    </div>
                 <% } %>
             </section>
         </section>
