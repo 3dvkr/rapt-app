@@ -70,8 +70,6 @@ main, header {
 
 }
 
-form {margin: 2rem;}
-
 form, #setTime {
 	display: flex;
     flex-flow: column;
@@ -85,7 +83,9 @@ label, button {
 }
 
 /* div > * {margin: 0.25rem;} */
-
+*{
+	line-height: 2rem;
+}
 #plot div {
     height: 20px;
 }
@@ -153,6 +153,17 @@ a:hover {text-decoration: underline;}
     color: var(--dark-accent);
 }
 
+.update, .delete {
+	border-radius: 1rem;
+	padding: 0 0.5rem;
+	margin-right: 0.25rem;
+	border-left: 0.25rem solid var(--main-accent);
+	border-right: 0.25rem solid var(--main-accent);
+}
+
+.update:hover, .delete:hover {
+	background-color: var(--light);
+}
 
 /* MISC ---------------------- */
 input[type="radio"] {
