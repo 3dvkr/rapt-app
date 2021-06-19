@@ -83,11 +83,11 @@ label, button {
 }
 
 /* div > * {margin: 0.25rem;} */
-*{
+* {
 	line-height: 2rem;
 }
 #plot div {
-    height: 20px;
+    height: 25px;
 }
 
 .bar-container, .barLabels {
@@ -97,7 +97,7 @@ label, button {
 	border: 1px solid var(--dark-accent);
 }
 .bartext {
-	padding-left: 1rem;
+	padding-left: 0.5rem;
 }
 
 #plot {
@@ -118,7 +118,7 @@ label, button {
 	display: flex;
 	align-items:center;
 }
-header > ul {justify-content: space-evenly;}
+ul {justify-content: space-evenly; padding: 0;}
 
 /* #barSide div */
 div.bar {
@@ -165,7 +165,9 @@ a:hover {text-decoration: underline;}
     border: 1px outset gray;
     color: var(--dark-accent);
 }
-
+.sessionMemo {
+	font-style: italic;
+}
 .update, .delete {
 	border-radius: 1rem;
 	padding: 0 0.5rem;
@@ -177,7 +179,12 @@ a:hover {text-decoration: underline;}
 .update:hover, .delete:hover {
 	background-color: var(--light);
 }
-
+.plot {
+	line-height: 0;
+}
+.bartext {
+	overflow: hidden;
+}
 /* MISC ---------------------- */
 input[type="radio"] {
     opacity: 0;

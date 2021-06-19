@@ -54,11 +54,10 @@ function askNotificationPermission() {
 }
 
 // function for creating the notification
-function createNotification() {
+function createNotification(type) {
 //   let img = "#";
-  let text = "placeholder memo";
-  let notification = new Notification("Notification Title", {
-       body: text,
+  let notification = new Notification("Timer's done!", {
+       body: `Your ${type} session is over. Head back to Rapt to log it.`,
         // icon: img 
     });
 
