@@ -55,7 +55,7 @@ module.exports = {
         }, [])
         .sort((a, b) => b.duration - a.duration)
         .slice(0, 5);
-        console.log(data)
+        // console.log(data)
       res.render("history", { history, data });
     } catch (err) {
       console.log(err);

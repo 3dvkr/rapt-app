@@ -106,7 +106,9 @@ label, button {
     display: flex;
 }
 
-
+#mainPage {
+	margin-top: 30vh;
+}
 #barSide {
     flex: 1 1 50%;
     text-align: right;
@@ -133,12 +135,20 @@ div.bar {
 
 /* STYLES -------------------- */
 html{scroll-behavior: smooth;}
-* {border-radius: 0.01rem;}
+* {
+	border-radius: 0.01rem;
+	font-family: 'Palatino', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 main {
 	border: 10px double var(--main-accent);
+	border-radius: 2rem;
 }
 
-a {
+blockquote {
+	font-style: italic;
+}
+
+a, .update, .delete {
 	text-decoration: none;
 	color: var(--dark-accent);
 }
@@ -146,6 +156,9 @@ a:hover {text-decoration: underline;}
 #sessionChoice, #countdownP {
     font-size: xx-large;
     color: var(--main-accent);
+}
+#mainPage{
+	text-align: center;
 }
 #countdownP {font-size:4rem;}
 .selected {

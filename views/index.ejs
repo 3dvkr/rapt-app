@@ -1,9 +1,11 @@
 <%- include('partials/header.ejs') %>
-    <h1><%= testStr %></h1>
-    <% if (testBool) { %>
-        <p>truthy</p>
-     <% } %>
-     <section>
-<a href="/signup">Sign up</a><a href="/login">Log in</a>
-     </section>
+     <main id="mainPage">
+          <h1>Rapt</h1>
+          <p id="appInfo">Track time. Build habits. Make progress. </p>
+          <!-- <blockquote>How we spend our days is how we spend our lives. -- Annie Dillard</blockquote> -->
+          <section id="proceed">
+               <a href="/signup">Sign up</a> or <a href="/login">Log in</a>
+          </section>
+     </main>
+
 <%- include('partials/footer.ejs') %>

@@ -15,7 +15,7 @@ inputs.forEach((el) =>
         let duration = document.querySelector('input[name="duration"]');
         duration.focus();
         sessionType = el.value;
-        duration.value = el.value == "work" ? 2 : 1; // fix
+        duration.value = el.value == "work" ? 25 : 5; 
       });
   })
 );
@@ -34,9 +34,9 @@ if (startBtn) {
       let [minutes, seconds] = [+timeString, 0];
       let countdown = setInterval(() => {
         if (seconds == 0) {
-          seconds = 5; //fix
+          seconds = 59; 
           minutes--;
-        } // FIX THIS LINE, it's the wrong # for testing
+        } 
         else {
           seconds--;
         }
@@ -50,7 +50,9 @@ if (startBtn) {
           document.getElementById("sessionInfo").textContent = `You had a ${timeString}-minute long ${sessionType} session. Add to history?`;
           document.getElementById("submitBtn").classList.remove("hide");
         }
-      }, 1000);
+      }, 
+      20);
+      // 1000);
     }
   });
 }
