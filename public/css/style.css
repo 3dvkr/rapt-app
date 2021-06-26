@@ -32,6 +32,7 @@ body {
 }
 ol, ul {
 	list-style: none;
+	padding: 0;
 }
 blockquote, q {
 	quotes: none;
@@ -109,16 +110,17 @@ label, button {
 #mainPage {
 	margin-top: 30vh;
 }
+main {margin-bottom: 1rem;}
 #barSide {
     flex: 1 1 50%;
     text-align: right;
 }
 
-.bar-container, header > ul{
+.bar-container, #mainNav{
 	display: flex;
 	align-items:center;
 }
-ul {justify-content: space-evenly; padding: 0;}
+#mainNav {justify-content: space-evenly;}
 
 /* #barSide div */
 div.bar {
@@ -159,6 +161,12 @@ a:hover {text-decoration: underline;}
 }
 #mainPage{
 	text-align: center;
+	box-shadow: 0 9px 15px 3px grey;
+}
+#siteName{
+	font-variant: small-caps;
+	font-size: 2rem;
+	padding-bottom: 0.5rem;
 }
 #countdownP {font-size:4rem;}
 .selected {
@@ -174,6 +182,7 @@ a:hover {text-decoration: underline;}
 	margin-right: 0.25rem;
 	border-left: 0.25rem solid var(--main-accent);
 	border-right: 0.25rem solid var(--main-accent);
+	text-align: center;
 }
 
 .update:hover, .delete:hover {
@@ -203,4 +212,10 @@ input[type="radio"] {
 	#plot {
 		width: 60%;
 	}
+	li {
+		display: grid;
+		grid-template-columns: 30fr 40fr 15fr 15fr;
+		gap: 3ch;
+	}
+	#mainNav li {display: list-item;}
 }
