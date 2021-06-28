@@ -1,5 +1,6 @@
 <%- include('partials/header.ejs') %>
-<main>
+<%- include('partials/nav-unauth') %>
+<main id="mainPage">
     <div>
         <section>
             <% if (locals.messages.errors) { %>
@@ -13,20 +14,20 @@
                 <% }) %>    
             <% } %>
             <form action="/signup" method="POST">
-                <div>
+                <div class="gridForm">
                     <label for="userName">User Name</label>
                     <input type="text" id="userName" name="userName">
                   </div>
-                <div>
+                <div class="gridForm">
                   <label for="inputEmail">Email address</label>
                   <input type="email" id="inputEmail" aria-describedby="emailHelp" name="email">
                   <div id="emailHelp">We'll never share your email with anyone else.</div>
                 </div>
-                <div>
+                <div class="gridForm">
                   <label for="password">Password</label>
                   <input type="password" id="password" name="password">
                 </div>
-                <div>
+                <div class="gridForm">
                     <label for="confirmPassword">Confirm Password</label>
                     <input type="password" id="confirmPassword" name="confirmPassword">
                   </div>

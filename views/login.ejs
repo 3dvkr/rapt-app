@@ -1,4 +1,5 @@
 <%- include('partials/header.ejs') %>
+<%- include('partials/nav-unauth') %>
 <main id="mainPage">
     <div>
       <section>
@@ -9,7 +10,7 @@
         <div><%= el.msg %></div>
         <% }) %> <% } %>
         <form action="/login" method="POST">
-          <div>
+          <div class="gridForm">
             <label for="inputEmail">Email address</label>
             <input
               type="email"
@@ -18,7 +19,7 @@
               name="email"
             />
           </div>
-          <div>
+          <div class="gridForm">
             <label for="inputPassword">Password</label>
             <input
               type="password"

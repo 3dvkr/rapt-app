@@ -67,7 +67,7 @@ module.exports = {
         _id: req.params.id,
         user: req.user.id,
       });
-      console.log("PATCH ATTEMPT", req.body.memo, req.body.duration);
+      // console.log("PATCH ATTEMPT", req.body.memo, req.body.duration);
 
       if (req.body.memo) {
         timer.memo = req.body.memo;

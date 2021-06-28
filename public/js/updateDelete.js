@@ -16,8 +16,8 @@ document.querySelectorAll(".update").forEach((el) =>
         fetchBodyObj.duration = newDuration;
       }
       if (newMemo || newDuration) {
-        console.log(fetchBodyObj);
-        console.log(newMemo, newDuration);
+        // console.log(fetchBodyObj);
+        // console.log(newMemo, newDuration);
         fetch(`/update/${e.target.parentNode.dataset.id}`, {
           method: "PATCH",
           headers: { "Content-type": "application/json" },
@@ -47,7 +47,7 @@ document.querySelectorAll(".delete").forEach((el) =>
 let barData = Array.from(document.querySelectorAll(".bartext")).map(
   (el) => +el.textContent.slice(0, -5)
 );
-console.log(barData)
+// console.log(barData)
 
 if (barData.length > 0) {
   setTimeout(() => {
