@@ -1,23 +1,28 @@
+let newTimerAllow = true;
+
 // Default time for session types:
 let inputs = document.querySelectorAll('input[name="sessionType"]');
 let sessionType = 'work';
 inputs.forEach((el) =>
   el.addEventListener("click", () => {
-    document.getElementById('startBtn').classList.remove("hide");
-    Array.from(inputs).forEach((el) => {
-      el.parentNode.children[0].classList.remove("selected");
-    });
-
-    Array.from(inputs)
-      .filter((el) => el.checked)
-      .forEach((el) => {
-        el.parentNode.children[0].classList.add("selected");
-        let duration = document.querySelector('input[name="duration"]');
-        duration.focus();
-        sessionType = el.value;
-        duration.value = el.value == "work" ? 25 : 5; 
+    if (newTimerAllow) {
+      document.getElementById('startBtn').classList.remove("hide");
+      Array.from(inputs).forEach((el) => {
+        el.parentNode.children[0].classList.remove("selected");
       });
-  })
+  
+      Array.from(inputs)
+        .filter((el) => el.checked)
+        .forEach((el) => {
+          el.parentNode.children[0].classList.add("selected");
+          let duration = document.querySelector('input[name="duration"]');
+          duration.focus();
+          sessionType = el.value;
+          duration.value = el.value == "work" ? 25 : 5; 
+        });
+      }
+    }
+  )
 );
 
 
@@ -28,6 +33,12 @@ const startBtn = document.getElementById("startBtn");
 if (startBtn) {
   startBtn.addEventListener("click", (e) => {
     e.preventDefault();
+  //   window.onbeforeunload = function() {
+  //     return "Do you really want to leave our brilliant application?";
+
+  //  };
+
+    newTimerAllow = false;
     timeString = document.getElementById("sessionTimer").value;
     if (timeString && timeString > 0) {
       e.target.classList.add("hide");
@@ -49,22 +60,11 @@ if (startBtn) {
           }
           document.getElementById("sessionInfo").textContent = `You had a ${timeString}-minute long ${sessionType} session. Add to history?`;
           document.getElementById("submitBtn").classList.remove("hide");
+          newTimerAllow = true;
         }
       }, 
       20);
       // 1000);
     }
   });
-}
-
-function check(){
-  var radios = document.getElementsByName("input");
-
-  for (var i = 0, len = radios.length; i < len; i++) {
-       if (radios[i].checked) {
-           return true;
-       }
-  }
-
-  return false;
 }
