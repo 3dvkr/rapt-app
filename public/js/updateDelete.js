@@ -3,7 +3,7 @@ document.getElementById("modalFade").classList.add("hide");
 
 document.getElementById('closeModal').addEventListener('click', () => {
   document.getElementById("modalFade").classList.add("hide");
-})
+});
 // update existing session records:
 document.querySelectorAll(".update").forEach((el) =>
   el.addEventListener("click", (e) => {

@@ -34,7 +34,7 @@
                         <li
                             data-id="<%= session._id %>"
                         > 
-                            <%= `${session.sessionType}: ${session.duration} ${session.duration == 1 ? 'minute' : 'minutes'}` %> <span class="sessionMemo"><%= session.memo && `${session.memo}`%></span> <a href="#" class="update">Edit</a> <span class="delete">Delete</span>
+                            <%= `${session.sessionType}: ${session.duration} ${session.duration == 1 ? 'minute' : 'minutes'}` %> <span class="sessionMemo"><%= session.memo && `${session.memo}`%></span> <span class="update">Edit</span> <span class="delete">Delete</span>
                         </li>
                     <% } %>
                 </ul>
