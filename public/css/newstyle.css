@@ -6,8 +6,20 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 * {
     line-height: 1.7;
 }
-
+/* --------------------COLOUR PALETTE--------------- */
+:root {
+	--dark-accent: hsl(246, 17%, 36%);
+	--main-accent: hsl(49, 89%, 93%);
+	--light-accent: hsl(234, 100%, 87%);
+	--light: hsl(210, 40%, 85%);
+}
 /* LAYOUT */
+body {
+	display: grid;
+	/* grid-template-rows: auto 1fr auto; */
+    grid-template-rows: 1fr;
+	height: 100vh;
+}
 #mainPage {
     display: flex;
     flex-flow: column;
@@ -28,12 +40,11 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 #workFormMain {
 	display: flex;
 	justify-content: space-around;
-    align-items: center;
 }
 #setTime {
 	display: flex;
 	flex-flow: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 #workForm {width: 90%;}
@@ -43,12 +54,20 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
     justify-content: center;
     align-items: center;
 }
+#sessionTimer {
+    width: 60%;
+    padding: 0.5rem;
+    line-height: 2.2rem;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid var(--main-accent);
+}
 
 /* STYLES */
-
+* {border-radius: 5px;}
 #mainPage {
     max-width: 750px;
-    background-color: #fcfcfc;
+    background-color: var(--main-accent);
     margin: 0 auto;
     padding: 1.5rem;
 }
@@ -65,28 +84,21 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
     margin: 0.5rem;
     padding: 1rem 2rem;
     border-radius: 5px;
-    background-color: #f1f1f1;
+    background-color: var(--light);
     border: none;
     color: #000;
     font-size: 1.2rem;
     cursor: pointer;
     text-decoration: none;
+    text-align: center;
+    min-width: 25%;
 }
 .btn:hover{
     text-decoration: underline;
 }
 
-.sessionOption {
-    /* display: inline-block;
-    margin: 0.5rem;
-    padding: 1rem 2rem;
-    border-radius: 5px; */
-    background-color: pink;
-    /* border: none;
-    color: #000;
-    font-size: 1.2rem;
-    cursor: pointer;
-    text-decoration: none; */
+.sessionOption:hover {
+    text-decoration: none; 
 }
 
 #countdownP {
@@ -120,20 +132,149 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
     max-width: 650px;
 }
 #startBtn {
-    background: red;
-    padding: 2rem;
+    padding: 2rem; 
+    margin: auto 0;
+}
+#startBtn:hover {
+    background-color: var(--light);
 }
 
 /* JS */
 .hide {
     display:none!important;
 }
+.highlightSelection {
+    animation: highlight 0.5s ease-out;
+}
+
+@keyframes highlight {
+    from {
+        background-color: var(--main-accent);
+    }
+    20% {
+        background-color: var(--light);
+    }
+    to {
+        background-color: var(--main-accent);
+    }
+}
+
+
 
 @media screen and (min-width: 600px) {
     #buttonMenu {
         flex-flow: row;
+        justify-content: space-around;
+        /* width: 50%; */
     }
     #countdownP {
         font-size: 12rem;
     }
+    #plot {
+        width: 60%;
+      }
+      li {
+        display: grid;
+        grid-template-columns: 30fr 40fr 15fr 15fr;
+        gap: 3ch;
+      }
+      #mainNav li {
+        display: list-item;
+      }
 }
+
+/* History, Today's */
+#updateDetailsBox {
+    width: 70%;
+    margin: 0 auto;
+}
+#emailHelp {
+    grid-column: 1 / 3;
+}
+
+#plot div {
+	height: 25px;
+  }
+  
+  .bar-container,
+  .barLabels {
+	margin: 1rem 0.5rem;
+  }
+  .bar {
+	border: 1px solid var(--dark-accent);
+  }
+  .bartext {
+	padding-left: 0.5rem;
+  }
+  
+  #plot {
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+  }
+
+  #barSide {
+	flex: 1 1 50%;
+	text-align: right;
+  }
+  
+  .bar-container,
+  #mainNav {
+	display: flex;
+	align-items: center;
+  }
+
+  #updateDetailsBox {
+    border: 1px dashed var(--main-accent);
+    padding: 1rem;
+}
+
+  /* #barSide div */
+  div.bar {
+	background-color: var(--dark-accent);
+	width: 50%;
+	transition: width 1s ease-out;
+  }
+  #workBlock,
+  #breakBlock {
+	margin: 1rem;
+	padding: 0.5rem;
+  }
+
+  #plot {
+	font-variant: small-caps;
+	padding-bottom: 0.5rem;
+  }
+  
+  .selected {
+	background: var(--dark-accent);
+    color: var(--light);
+  }
+  .update,
+  .delete {
+	border-radius: 1rem;
+	padding: 0 0.5rem;
+	margin-right: 0.25rem;
+	border-left: 0.25rem solid var(--main-accent);
+	border-right: 0.25rem solid var(--main-accent);
+	text-align: center;
+    text-decoration: none;
+    color: var(--dark-accent);
+  }
+  
+  .update:hover,
+  .delete:hover {
+	background-color: var(--light);
+  }
+  .plot {
+	line-height: 0;
+  }
+  .bartext {
+	overflow: hidden;
+  }
+
+  input[type="radio"] {
+	opacity: 0;
+	position: fixed;
+	width: 0;
+  }

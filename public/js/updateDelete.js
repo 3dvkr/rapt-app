@@ -1,6 +1,11 @@
+document.getElementById('hideMemoBtn').addEventListener('click', () => {
+  document.getElementById("updateDetailsBox").classList.add("hide");
+})
 // update existing session records:
 document.querySelectorAll(".update").forEach((el) =>
   el.addEventListener("click", (e) => {
+    el.parentElement.classList.add("highlightSelection");
+
     document.getElementById("updateDetailsBox").classList.remove("hide");
     document.getElementById("updateErrorP").classList.add("hide");
 
@@ -29,6 +34,9 @@ document.querySelectorAll(".update").forEach((el) =>
         document.getElementById("updateErrorP").classList.remove("hide");
       }
     });
+    setTimeout(() => {
+      el.parentElement.classList.remove("highlightSelection");
+    }, 900);
   })
 );
 

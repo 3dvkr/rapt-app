@@ -7,20 +7,19 @@ document.getElementById("closeModal").addEventListener("click", () => {
 });
 
 // Default time for session types:
-let inputs = document.querySelectorAll('input[name="sessionType"]');
+let inputs = document.querySelectorAll('.sessionOption');
 let sessionType = 'work';
 inputs.forEach((el) =>
   el.addEventListener("click", () => {
     if (newTimerAllow) {
       document.getElementById('startBtn').classList.remove("hide");
       Array.from(inputs).forEach((el) => {
-        el.parentNode.children[0].classList.remove("selected");
+        el.classList.remove("selected");
       });
-  
       Array.from(inputs)
-        .filter((el) => el.checked)
+        .filter((el) => el.childNodes[3].checked)
         .forEach((el) => {
-          el.parentNode.children[0].classList.add("selected");
+          el.classList.add("selected");
           let duration = document.querySelector('input[name="duration"]');
           duration.focus();
           sessionType = el.value;
