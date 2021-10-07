@@ -1,4 +1,10 @@
 let newTimerAllow = true;
+const startBtn = document.getElementById("startBtn");
+
+document.getElementById("closeModal").addEventListener("click", () => {
+  document.getElementById("timeModalFade").classList.add("hide");
+  startBtn.classList.remove("hide");
+});
 
 // Default time for session types:
 let inputs = document.querySelectorAll('input[name="sessionType"]');
@@ -29,7 +35,6 @@ inputs.forEach((el) =>
 // Count down feature
 let timeString;
 
-const startBtn = document.getElementById("startBtn");
 if (startBtn) {
   startBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -41,7 +46,7 @@ if (startBtn) {
     newTimerAllow = false;
     timeString = document.getElementById("sessionTimer").value;
     if (timeString && timeString > 0) {
-      e.target.classList.add("hide");
+      startBtn.classList.add("hide");
       let [minutes, seconds] = [+timeString, 0];
       let countdown = setInterval(() => {
         if (seconds == 0) {
@@ -59,7 +64,9 @@ if (startBtn) {
             createNotification(sessionType);
           }
           document.getElementById("sessionInfo").textContent = `You had a ${timeString}-minute long ${sessionType} session. Add to history?`;
-          document.getElementById("submitBtn").classList.remove("hide");
+          document.getElementById("timeModalFade").classList.remove("hide");
+          
+          
           newTimerAllow = true;
         }
       }, 

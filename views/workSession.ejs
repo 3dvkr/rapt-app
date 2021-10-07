@@ -1,35 +1,44 @@
 <%- include('partials/header')%>
-<%- include('partials/nav-auth') %>
-<main>
+<!-- <%- include('partials/nav-auth') %> -->
     <p>*Please note this app is currently in demo mode. Time runs a little faster here.</p>
-    <form action="/main" method="POST">
-        <div id="sessionChoice">
-            <div id="workBlock">
-                <label class="selected" for="workSelect">Work</label>
-                <input type="radio" id="workSelect" name="sessionType" value="work" checked>
+    <div id="countdown">
+        <p id="countdownP" class=""></p>
+    </div>
+    <form id="workForm" action="/main" method="POST">
+        <div id="workFormMain">
+            <div id="sessionChoices">
+                <div id="workBlock" class="sessionOption btn">
+                    <label class="selected" for="workSelect">Work</label>
+                    <input type="radio" id="workSelect" name="sessionType" value="work" checked>
+                </div>
+                <div id="breakBlock" class="sessionOption btn">
+                    <label for="breakSelect">Break</label>
+                    <input type="radio" id="breakSelect" name="sessionType" value="break">
+                </div>
             </div>
-            <div id="breakBlock">
-                <label for="breakSelect">Break</label>
-                <input type="radio" id="breakSelect" name="sessionType" value="break">
+            
+            <div id="setTime">
+                <label for="sessionTimer">Set Timer </label>
+                <input type="number" id="sessionTimer" name="duration" min=0 max=60>
+            </div>
+            <button id="startBtn" class="btn">Start Timer</button>
+        </div>
+        <div id="timeModalFade" class="hide">
+            <div id="timeModal">
+                <p id="sessionInfo">Session Info</p>
+                <label for="memo">Add Memo?</label>
+                <input type="text id="memo" name="memo" placeholder="(optional)">
+                <section id="buttonMenu">
+                    <button type="submit" id="submitBtn" class="btn">Submit Session</button>
+                    <button type="button" id="closeModal" class="btn">Close without Submitting</button>
+                </section>
+
             </div>
         </div>
-        
-        <div id="setTime">
-            <label for="sessionTimer">Set Timer </label>
-            <input type="number" id="sessionTimer" name="duration" min=0 max=60>
-            <button id="startBtn">Start Timer</button>
-            <p id="sessionInfo">Session Info</p>
-            <label for="memo">Add Memo?</label>
-            <input type="text id="memo" name="memo" placeholder="(optional)">
-            <button type="submit" id="submitBtn" class="hide">Submit Session</button>
-        </div>
-        <div>
-            <p id="countdownP" class=""></p>
-        </div>
+
     </form>
 
     <button id="enable" type="button">Enable Notifications</button>
-</main>
 <script src="js/notifications.js"></script>
 <script src="js/main.js"></script>
 <%- include('partials/footer')%>
