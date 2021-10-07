@@ -1,14 +1,20 @@
-document.getElementById('hideMemoBtn').addEventListener('click', () => {
-  document.getElementById("updateDetailsBox").classList.add("hide");
+let memoId = "";
+document.getElementById("modalFade").classList.add("hide");
+
+document.getElementById('closeModal').addEventListener('click', () => {
+  document.getElementById("modalFade").classList.add("hide");
 })
 // update existing session records:
 document.querySelectorAll(".update").forEach((el) =>
   el.addEventListener("click", (e) => {
     el.parentElement.classList.add("highlightSelection");
+    memoId = e.target.parentNode.dataset.id;
 
-    document.getElementById("updateDetailsBox").classList.remove("hide");
+    document.getElementById("modalFade").classList.remove("hide");
     document.getElementById("updateErrorP").classList.add("hide");
-
+  }));
+document.getElementById("updateMemoBtn").addEventListener("click", () => {
+    document.getElementById("modalFade").classList.add("hide");
     let fetchBodyObj = {};
 
     document.getElementById("updateMemoBtn").addEventListener("click", () => {
@@ -21,9 +27,7 @@ document.querySelectorAll(".update").forEach((el) =>
         fetchBodyObj.duration = newDuration;
       }
       if (newMemo || newDuration) {
-        // console.log(fetchBodyObj);
-        // console.log(newMemo, newDuration);
-        fetch(`/update/${e.target.parentNode.dataset.id}`, {
+        fetch(`/update/${memoId}`, {
           method: "PATCH",
           headers: { "Content-type": "application/json" },
           body: JSON.stringify(fetchBodyObj),
@@ -37,8 +41,7 @@ document.querySelectorAll(".update").forEach((el) =>
     setTimeout(() => {
       el.parentElement.classList.remove("highlightSelection");
     }, 900);
-  })
-);
+  });
 
 document.querySelectorAll(".delete").forEach((el) =>
   el.addEventListener("click", (e) => {

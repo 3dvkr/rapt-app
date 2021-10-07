@@ -1,14 +1,16 @@
-<section id="updateDetailsBox" class="hide">
-    <h2>Edit Session</h2>
-    <div class="gridForm">
-        <label for="newMemo">New memo</label><input id="newMemo" type="text">
-        <label for="newDuration">New duration</label><input id="newDuration" type="number" min=0 max=60>
-    </div>
+<section id="modalFade" class="">
+    <div id="modal">
+        <h2>Edit Session</h2>
+        <div class="gridForm">
+            <label for="newMemo">New memo</label><input id="newMemo" type="text">
+            <label for="newDuration">New duration</label><input id="newDuration" type="number" min=0 max=60>
+        </div>
 
-    <div id="buttonMenu">
-        <button class="btn" id="updateMemoBtn">Save</button>
-        <button class="btn" id="hideMemoBtn">Cancel</button>
-    </div>
+        <div id="buttonMenu">
+            <button class="btn" id="updateMemoBtn">Save</button>
+            <button class="btn" id="closeModal">Cancel</button>
+        </div>
 
-    <p class='hide' id="updateErrorP">Please select a session to update, and fill in at least one the two fields.</p>
+        <p class='hide' id="updateErrorP">Please select a session to update, and fill in at least one the two fields.</p>
+    </div>
 </section>

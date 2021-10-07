@@ -2,7 +2,7 @@ let newTimerAllow = true;
 const startBtn = document.getElementById("startBtn");
 
 document.getElementById("closeModal").addEventListener("click", () => {
-  document.getElementById("timeModalFade").classList.add("hide");
+  document.getElementById("modalFade").classList.add("hide");
   startBtn.classList.remove("hide");
 });
 
@@ -12,18 +12,23 @@ let sessionType = 'work';
 inputs.forEach((el) =>
   el.addEventListener("click", () => {
     if (newTimerAllow) {
+      // Make the option to start timer available:
       document.getElementById('startBtn').classList.remove("hide");
+      // Reset the form:
       Array.from(inputs).forEach((el) => {
         el.classList.remove("selected");
       });
-      Array.from(inputs)
+      // Set the selected option:
+      const pickChecked = Array.from(inputs)
         .filter((el) => el.childNodes[3].checked)
-        .forEach((el) => {
+      console.log(pickChecked);
+      pickChecked.forEach((el) => {
+          console.log(el)
           el.classList.add("selected");
-          let duration = document.querySelector('input[name="duration"]');
+          let duration = document.getElementById("sessionTimer");
           duration.focus();
-          sessionType = el.value;
-          duration.value = el.value == "work" ? 25 : 5; 
+          sessionType = el.childNodes[1].innerText.toLowerCase();
+          duration.value = sessionType == "work" ? 25 : 5; 
         });
       }
     }
@@ -63,7 +68,7 @@ if (startBtn) {
             createNotification(sessionType);
           }
           document.getElementById("sessionInfo").textContent = `You had a ${timeString}-minute long ${sessionType} session. Add to history?`;
-          document.getElementById("timeModalFade").classList.remove("hide");
+          document.getElementById("modalFade").classList.remove("hide");
           
           
           newTimerAllow = true;

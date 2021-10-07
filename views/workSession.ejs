@@ -6,6 +6,7 @@
     </div>
     <form id="workForm" action="/main" method="POST">
         <div id="workFormMain">
+            <h2 class="instructions">Preset Time Blocks:</h2>
             <div id="sessionChoices">
                 <div id="workBlock" class="selected sessionOption btn">
                     <label class="" for="workSelect">Work</label>
@@ -18,13 +19,14 @@
             </div>
             
             <div id="setTime">
-                <label for="sessionTimer">Set Timer </label>
+                <label class="instructions" for="sessionTimer">Set Timer </label>
                 <input type="number" id="sessionTimer" name="duration" min=0 max=60>
             </div>
             <button id="startBtn" class="btn">Start Timer</button>
         </div>
-        <div id="timeModalFade" class="hide">
-            <div id="timeModal">
+
+        <div id="modalFade" class="hide">
+            <div id="modal">
                 <p id="sessionInfo">Session Info</p>
                 <label for="memo">Add Memo?</label>
                 <input type="text id="memo" name="memo" placeholder="(optional)">
