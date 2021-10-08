@@ -6,23 +6,14 @@
     </div>
     <form id="workForm" action="/main" method="POST">
         <div id="workFormMain">
-            <h2 class="instructions">Preset Time Blocks:</h2>
-            <div id="sessionChoices">
-                <div id="workBlock" class="selected sessionOption btn">
-                    <label class="" for="workSelect">Work</label>
-                    <input type="radio" id="workSelect" name="sessionType" value="work" checked>
-                </div>
-                <div id="breakBlock" class="sessionOption btn">
-                    <label for="breakSelect">Break</label>
-                    <input type="radio" id="breakSelect" name="sessionType" value="break">
-                </div>
-            </div>
-            
-            <div id="setTime">
-                <label class="instructions" for="sessionTimer">Set Timer </label>
-                <input type="number" id="sessionTimer" name="duration" min=0 max=60>
-            </div>
-            <button id="startBtn" class="btn">Start Timer</button>
+            <h2 class="instructions">Preset times:</h2>
+            <label class="selected btn" for="workSelect">Work</label>
+            <input type="radio" id="workSelect" class="sessionOption" name="sessionType" value="work" checked>
+            <label class="btn" for="breakSelect">Break</label>
+            <input type="radio" id="breakSelect"  class="sessionOption" name="sessionType" value="break">
+            <label class="instructions" for="sessionTimer">Set Timer </label>
+            <input type="number" id="sessionTimer" name="duration" min=0 max=60>
+            <button type="button" id="startBtn" class="btn">Start Timer</button>
         </div>
 
         <div id="modalFade" class="hide">
@@ -34,7 +25,6 @@
                     <button type="submit" id="submitBtn" class="btn">Submit Session</button>
                     <button type="button" id="closeModal" class="btn">Close without Submitting</button>
                 </section>
-
             </div>
         </div>
 
@@ -44,3 +34,20 @@
 <script src="js/notifications.js"></script>
 <script src="js/main.js"></script>
 <%- include('partials/footer')%>
+
+
+<!-- <div id="workFormMain">
+            <h2 class="instructions">Preset Time Blocks:</h2>
+            <div id="sessionChoices">
+                    <label class="selected sessionOption btn" for="workSelect">Work</label>
+                    <input type="radio" id="workSelect" name="sessionType" value="work" checked>
+                    <label class="sessionOption btn" for="breakSelect">Break</label>
+                    <input type="radio" id="breakSelect" name="sessionType" value="break">
+            </div>
+            
+            <div id="setTime">
+                <label class="instructions" for="sessionTimer">Set Timer </label>
+                <input type="number" id="sessionTimer" name="duration" min=0 max=60>
+            </div>
+            <button type="button" id="startBtn" class="btn">Start Timer</button>
+        </div> -->

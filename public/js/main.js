@@ -7,34 +7,21 @@ document.getElementById("closeModal").addEventListener("click", () => {
 });
 
 // Default time for session types:
-let inputs = document.querySelectorAll('.sessionOption');
 let sessionType = 'work';
-inputs.forEach((el) =>
-  el.addEventListener("click", () => {
-    if (newTimerAllow) {
-      // Make the option to start timer available:
-      document.getElementById('startBtn').classList.remove("hide");
-      // Reset the form:
-      Array.from(inputs).forEach((el) => {
-        el.classList.remove("selected");
-      });
-      // Set the selected option:
-      const pickChecked = Array.from(inputs)
-        .filter((el) => el.childNodes[3].checked)
-      console.log(pickChecked);
-      pickChecked.forEach((el) => {
-          console.log(el)
-          el.classList.add("selected");
-          let duration = document.getElementById("sessionTimer");
-          duration.focus();
-          sessionType = el.childNodes[1].innerText.toLowerCase();
-          duration.value = sessionType == "work" ? 25 : 5; 
-        });
-      }
-    }
-  )
-);
 
+const inputs = Array.from(document.querySelectorAll('input[name="sessionType"]'));
+
+inputs.forEach(el => el.addEventListener('click', checkValue));
+
+function checkValue(e) {
+  for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i].checked) {
+      inputs[i].previousElementSibling.classList.add("selected");
+    } else {
+      inputs[i].previousElementSibling.classList.remove("selected");
+    }
+  }
+}
 
 // Count down feature
 let timeString;
@@ -43,8 +30,7 @@ if (startBtn) {
   startBtn.addEventListener("click", (e) => {
     e.preventDefault();
   //   window.onbeforeunload = function() {
-  //     return "Do you really want to leave our brilliant application?";
-
+  //     return "The timer will be cancelled. Would you like to leave this page?";
   //  };
 
     newTimerAllow = false;
