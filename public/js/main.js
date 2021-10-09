@@ -14,13 +14,19 @@ const inputs = Array.from(document.querySelectorAll('input[name="sessionType"]')
 inputs.forEach(el => el.addEventListener('click', checkValue));
 
 function checkValue(e) {
-  for (let i = 0; i < inputs.length; i++) {
-    if (inputs[i].checked) {
-      inputs[i].previousElementSibling.classList.add("selected");
-    } else {
-      inputs[i].previousElementSibling.classList.remove("selected");
+  if (newTimerAllow) {
+    for (let i = 0; i < inputs.length; i++) {
+      const prevLabel = inputs[i].previousElementSibling;
+      if (inputs[i].checked) {
+        prevLabel.classList.add("selected");
+      } else {
+        prevLabel.classList.remove("selected");
+      }
     }
   }
+}
+function enterTime() {
+  
 }
 
 // Count down feature

@@ -20,21 +20,20 @@ body {
     grid-template-rows: 1fr;
 	height: 100vh;
 }
+h2 {margin: 0;}
+input {min-width: 0;}
 #mainPage {
     display: flex;
     flex-flow: column;
-    /* justify-content: center; */
     align-items: center;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 1.5rem;
 }
-.btn {
-  display: inline-block;
-  margin: 0.5rem;
-  padding: 1rem 2rem;
-  min-width: 25%;
+#mainPage, #buttonMenu {
+  padding: 1.5rem;
 }
-.sessionOption{
-  padding: 0;
-}
+
 .gridForm {
 	display: grid;
 	grid-template-columns: 40fr 60fr;
@@ -47,12 +46,7 @@ body {
   flex-flow: row wrap;
 	justify-content: space-around;
 }
-#setTime {
-	display: flex;
-	flex-flow: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
+
 #workForm {width: 90%;}
 #workFormMain {
     width: 100%;
@@ -60,45 +54,27 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1ch;
 }
-#sessionChoices {grid-column: 2/4;}
-#setTime {grid-column: 1/3;}
-#sessionChoices, #setTime {
-  display: grid;
-  width: 100%;
-  grid-template-columns: 1fr 1fr;
+#workFormMain > * {
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
-#sessionTimer, input[type=text], input[type=number] {
-    width: 60%;
-    margin: 1rem auto;
-    padding: 0.5rem;
-    line-height: 2.2rem;
-    border-radius: 8px;
-    outline: none;
-    border: 1px solid var(--main-accent);
-}
-label, .instructions {
-  display: inline-block;
-  padding: 1rem 2rem;
-}
-.gridForm label {padding: 1rem;}
 
+#countdownP {margin: 0;}
 /* STYLES */
 * {border-radius: 5px;}
 #mainPage {
-    max-width: 750px;
     background-color: var(--main-accent);
-    margin: 0 auto;
-    padding: 1.5rem;
 }
-#mainPage, #buttonMenu {
-    padding: 1.5rem;
-}
+
 #buttonMenu{
     display: flex;
     flex-flow: column;
 }
-
-
+.instructions {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
 .btn {
   border-radius: 5px;
   background-color: var(--light);
@@ -117,13 +93,18 @@ label, .instructions {
     text-decoration: none; 
 }
 
+#startBtn:hover, .selected {
+  background-color: var(--dark-accent);
+  color: var(--light);
+}
+
 #countdownP {
     font-size: 8rem;
     font-weight: bold;
     text-align: center;
-    margin: 0;
     line-height: normal;
 }
+
 
 /* MODAL */
 #modalFade {
@@ -146,18 +127,6 @@ label, .instructions {
     border-radius: 5px;
     width: 80%;
     max-width: 650px;
-}
-#startBtn {
-    /* padding: 2rem;  */
-    margin: auto 0;
-}
-#startBtn:hover {
-    background-color: var(--dark-accent);
-    color: var(--light);
-}
-.instructions {
-  font-size: 1.2rem;
-  font-weight: bold;
 }
 /* JS */
 .hide {
@@ -245,21 +214,12 @@ label, .instructions {
 	width: 50%;
 	transition: width 1s ease-out;
   }
-  #workBlock,
-  #breakBlock {
-	margin: 1rem;
-	padding: 0.5rem;
-  }
 
   #plot {
 	font-variant: small-caps;
 	padding-bottom: 0.5rem;
   }
   
-  .selected {
-	  background: var(--dark-accent);
-    color: var(--light-accent);
-  }
   .update,
   .delete {
 	border-radius: 1rem;
@@ -268,7 +228,7 @@ label, .instructions {
 	text-align: center;
   text-decoration: none;
   color: var(--dark-accent);
-  padding: 0.1rem 0.5rem;
+  /* padding: 0.1rem 0.5rem; */
   }
   
   .update:hover,
