@@ -14,6 +14,7 @@
             <label class="instructions" for="sessionTimer">Set Timer </label>
             <input type="number" id="sessionTimer" name="duration" min=0 max=60>
             <button type="button" id="startBtn" class="btn">Start Timer</button>
+            <button id="enable" type="button" class="btn">Enable Notifications</button>
         </div>
 
         <div id="modalFade" class="hide">
@@ -29,10 +30,6 @@
         </div>
 
     </form>
-
-    <button id="enable" type="button">Enable Notifications</button>
-<script src="js/notifications.js"></script>
-<script src="js/main.js"></script>
 <%- include('partials/footer')%>
 
 
