@@ -17,16 +17,21 @@ function checkValue(e) {
   if (newTimerAllow) {
     for (let i = 0; i < inputs.length; i++) {
       const prevLabel = inputs[i].previousElementSibling;
+      
       if (inputs[i].checked) {
         prevLabel.classList.add("selected");
+        sessionType = inputs[i].value;
       } else {
         prevLabel.classList.remove("selected");
       }
     }
+    enterPresetTime(sessionType);
   }
 }
-function enterTime() {
-  
+function enterPresetTime(whichSession) {
+  const duration = document.getElementById("sessionTimer");
+  duration.focus();
+  duration.value = whichSession == "work" ? 25 : 5; 
 }
 
 // Count down feature
