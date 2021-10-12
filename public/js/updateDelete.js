@@ -17,27 +17,25 @@ document.getElementById("updateMemoBtn").addEventListener("click", () => {
     document.getElementById("modalFade").classList.add("hide");
     let fetchBodyObj = {};
 
-    document.getElementById("updateMemoBtn").addEventListener("click", () => {
-      const newMemo = document.getElementById("newMemo").value;
-      const newDuration = document.getElementById("newDuration").value;
-      if (newMemo) {
-        fetchBodyObj.memo = newMemo;
-      }
-      if (newDuration) {
-        fetchBodyObj.duration = newDuration;
-      }
-      if (newMemo || newDuration) {
-        fetch(`/update/${memoId}`, {
-          method: "PATCH",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify(fetchBodyObj),
-        }).then((res) => {
-          window.location.reload();
-        })
-      } else {
-        document.getElementById("updateErrorP").classList.remove("hide");
-      }
-    });
+    const newMemo = document.getElementById("newMemo").value;
+    const newDuration = document.getElementById("newDuration").value;
+    if (newMemo) {
+      fetchBodyObj.memo = newMemo;
+    }
+    if (newDuration) {
+      fetchBodyObj.duration = newDuration;
+    }
+    if (newMemo || newDuration) {
+      fetch(`/update/${memoId}`, {
+        method: "PATCH",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(fetchBodyObj),
+      }).then((res) => {
+        window.location.reload();
+      })
+    } else {
+      document.getElementById("updateErrorP").classList.remove("hide");
+    }
     setTimeout(() => {
       el.parentElement.classList.remove("highlightSelection");
     }, 900);
