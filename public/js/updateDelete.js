@@ -1,5 +1,7 @@
-let memoId = "";
-document.getElementById("modalFade").classList.add("hide");
+let memoId = "", time = '', memo = '';
+
+const memoBox = document.getElementById("newMemo");
+const durationBox = document.getElementById("newDuration");
 
 document.getElementById('closeModal').addEventListener('click', () => {
   document.getElementById("modalFade").classList.add("hide");
@@ -9,16 +11,21 @@ document.querySelectorAll(".update").forEach((el) =>
   el.addEventListener("click", (e) => {
     el.parentElement.classList.add("highlightSelection");
     memoId = e.target.parentNode.dataset.id;
-
+    [memo, time] = parseSession(el.parentElement.innerText);
+    memoBox.value = memo;
+    durationBox.value = time;
     document.getElementById("modalFade").classList.remove("hide");
     document.getElementById("updateErrorP").classList.add("hide");
+    setTimeout(() => {
+      el.parentElement.classList.remove("highlightSelection");
+    }, 900);
   }));
-document.getElementById("updateMemoBtn").addEventListener("click", () => {
-    document.getElementById("modalFade").classList.add("hide");
+// handle update form 'submission':
+document.getElementById("updateMemoBtn").addEventListener("click", () => { 
     let fetchBodyObj = {};
 
-    const newMemo = document.getElementById("newMemo").value;
-    const newDuration = document.getElementById("newDuration").value;
+    const newMemo = memoBox.value;
+    const newDuration = durationBox.value;
     if (newMemo) {
       fetchBodyObj.memo = newMemo;
     }
@@ -36,9 +43,6 @@ document.getElementById("updateMemoBtn").addEventListener("click", () => {
     } else {
       document.getElementById("updateErrorP").classList.remove("hide");
     }
-    setTimeout(() => {
-      el.parentElement.classList.remove("highlightSelection");
-    }, 900);
   });
 
 document.querySelectorAll(".delete").forEach((el) =>
@@ -46,7 +50,7 @@ document.querySelectorAll(".delete").forEach((el) =>
     if (e.target) {
       fetch(`/delete/${e.target.parentNode.dataset.id}`, {
         method: "DELETE",
-      }).then((res) => {
+      }).then(() => {
         window.location.reload();
       });
     }
@@ -56,7 +60,7 @@ document.querySelectorAll(".delete").forEach((el) =>
 let barData = Array.from(document.querySelectorAll(".bartext")).map(
   (el) => +el.textContent.slice(0, -5)
 );
-// console.log(barData)
+
 
 if (barData.length > 0) {
   setTimeout(() => {
@@ -64,4 +68,11 @@ if (barData.length > 0) {
       .data(barData)
       .style("width", (d) => `${(d / Math.max(...barData)) * 60}%`);
   }, 0);
+}
+
+function parseSession(sessionStr) {
+  return [
+    sessionStr.split(': ')[1].split(' m')[1].split(' E')[0].slice(6),
+    sessionStr.split(': ')[1].split(' m')[0]
+  ];
 }
