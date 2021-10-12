@@ -40,22 +40,20 @@ module.exports = {
       history = history.sort((a, b) => b.createdAt - a.createdAt);
 
       let data = history
-        .filter((el) => typeof el.memo == "string" && el.memo.length > 0)
+        .filter(el => typeof el.memo === "string" && el.memo.length > 0)
         .map((el) => {
           return { memo: el.memo, duration: el.duration };
         })
-        .reduce((acc, val) => {
-          if (!acc.some((el) => el.memo.includes(val.memo))) {
-            acc.push(val);
-          } else {
-            acc[acc.indexOf(acc.find((el) => el.memo == val.memo))].duration +=
-              val.duration;
+        .reduce((acc, curr) => { 
+          if (!acc.some(e => e.memo == curr.memo )) {
+            acc.push(curr);
+          }else {
+            acc[acc.indexOf(acc.find((doc) => doc.memo == curr.memo))].duration += curr.duration
           }
-          return acc;
+          return acc; 
         }, [])
         .sort((a, b) => b.duration - a.duration)
         .slice(0, 5);
-        // console.log(data)
       res.render("history", { history, data });
     } catch (err) {
       console.log(err);
