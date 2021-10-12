@@ -40,11 +40,11 @@ let timeString;
 if (startBtn) {
   startBtn.addEventListener("click", (e) => {
     e.preventDefault();
-  //   window.onbeforeunload = function() {
-  //     return "The timer will be cancelled. Would you like to leave this page?";
-  //  };
 
     newTimerAllow = false;
+    window.onbeforeunload = function (e) {
+      return "Your timer will be cancelled. Are you sure you want to navigate away from this page?";
+    };
     timeString = document.getElementById("sessionTimer").value;
     if (timeString && timeString > 0) {
       startBtn.classList.add("hide");
@@ -69,6 +69,7 @@ if (startBtn) {
           
           
           newTimerAllow = true;
+          window.onbeforeunload = null;
         }
       }, 
       20);
