@@ -1,6 +1,5 @@
 <%- include('partials/header') %>
 <%- include('partials/nav-auth') %>
-<main>
     <section id="summary">
         <h2>Summary</h2>
         <% let allMemos = [...new Set(history.map(el => el.memo))].filter(memo => typeof memo == 'string' && memo.length > 0) %>
@@ -42,4 +41,4 @@
         </ul>
     </section>
 </main>
-<%- include('partials/footer') %>
+<%- include('partials/footer.ejs') %>

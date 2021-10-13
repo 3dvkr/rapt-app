@@ -72,8 +72,8 @@ if (startBtn) {
           window.onbeforeunload = null;
         }
       }, 
-      1000);
-      // 20);
+      20);
+      // 1000);
     }
   });
 }
