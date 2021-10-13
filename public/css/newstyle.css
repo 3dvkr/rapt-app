@@ -159,6 +159,10 @@ nav li {
   margin: 0 1rem;
   cursor: pointer;
 }
+#navAccess:focus {
+  padding: 0.25rem;
+  outline: var(--light) 0.25rem solid;
+}
 .showNav {
   max-height: 450px;
   transition: height ease 0.5s, max-height ease 0.75s, opacity ease 0.5s 0.25s;

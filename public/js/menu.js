@@ -1,5 +1,13 @@
 const navAccess = document.getElementById('navAccess');
-console.log(navAccess);
+
 navAccess.addEventListener('click', () => {
-  document.getElementById('mainNav').classList.toggle('hideNav');
+  toggleMenu();
 });
+
+navAccess.addEventListener('keypress' , () => {
+  toggleMenu();
+});
+
+function toggleMenu() {
+  document.getElementById('mainNav').classList.toggle('hideNav');
+}
