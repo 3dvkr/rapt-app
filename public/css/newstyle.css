@@ -42,8 +42,9 @@ input {min-width: 0;}
 }
 #mainPage {
   flex-flow: column;
-  justify-content: space-around;
+  justify-content: center;
 }
+#summary {width:100%;}
 
 #mainPage, #buttonMenu {
   padding: 1.5rem;
@@ -72,7 +73,7 @@ input {min-width: 0;}
 #workFormMain {
     width: 100%;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr 1fr;
     gap: 1ch;
 }
 #workFormMain > * {
@@ -151,7 +152,6 @@ nav li {
 #mainNav {
   width: 100%; 
   padding: 0;
-  transition: height ease 1s, opacity ease 1s 0.25s;
 }
 #navAccess {
   font-size: 1.4rem;
@@ -160,16 +160,15 @@ nav li {
   cursor: pointer;
 }
 .showNav {
-  min-height: 45px;
+  max-height: 450px;
+  transition: height ease 0.5s, max-height ease 0.75s, opacity ease 0.5s 0.25s;
 }
 .hideNav {
-  min-height: 0;
-  height: 0;
+  transition: height ease 0.5s, max-height ease-out 0.5s, opacity ease 0.5s 0.25s;
+  max-height: 0px;
   opacity: 0;
 }
-.hideNav *{
-  opacity:0;
-}
+
 #titleMenu {
   display: flex;
   align-items: center;
