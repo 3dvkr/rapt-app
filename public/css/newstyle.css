@@ -40,7 +40,10 @@ input {min-width: 0;}
     justify-content: space-between;
     align-items: center;
 }
-#mainPage {flex-flow: column;}
+#mainPage {
+  flex-flow: column;
+  justify-content: space-around;
+}
 
 #mainPage, #buttonMenu {
   padding: 1.5rem;
@@ -148,7 +151,7 @@ nav li {
 #mainNav {
   width: 100%; 
   padding: 0;
-  transition: height ease 1s, opacity ease 1s 0.5s;
+  transition: height ease 1s, opacity ease 1s 0.25s;
 }
 #navAccess {
   font-size: 1.4rem;
@@ -231,6 +234,9 @@ nav li {
   #workFormMain {
     grid-template-columns: 1fr;
   }
+  #mainPage{
+    margin: 0.25rem;
+  }
   #mainNav ul{
     flex-flow: column;
     margin-left:1.5rem;
@@ -238,13 +244,15 @@ nav li {
   #mainNav li {
     margin: 0.5rem 0;
   }
+  #allHistory ul, #plot {padding: 0; margin: 0;}
+  #plot {font-size: 0.8rem;}
 }
 @media screen and (max-width: 600px) {
     header {
       flex-flow: row wrap;
     }
     #mainPage{
-      margin: 0.25rem;
+      margin: 0.5rem;
     }
     #mainNav {
       min-width: 80vw;
