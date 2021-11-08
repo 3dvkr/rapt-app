@@ -5,7 +5,7 @@ module.exports = {
   workSession: (req, res) => {
     // console.log("main timer route works");
     // res.send("timer route")
-    res.render("workSession");
+    res.render("workSession", {baseUrl: '/main'});
   },
   postWorkSession: (req, res) => {
     Timer.create({
@@ -27,6 +27,7 @@ module.exports = {
       // console.log(today, "getTodaysTimers controller", timersToday);
       res.render("today.ejs", {
         timersToday,
+        baseUrl: '/today'
       });
     } catch (err) {
       console.log(err);
@@ -54,7 +55,7 @@ module.exports = {
         }, [])
         .sort((a, b) => b.duration - a.duration)
         .slice(0, 5);
-      res.render("history", { history, data });
+      res.render("history", { history, data, baseUrl: '/history' });
     } catch (err) {
       console.log(err);
     }

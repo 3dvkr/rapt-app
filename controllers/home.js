@@ -1,5 +1,5 @@
 module.exports = {// exports to routes/main.js
   hello: (req, res) => {
-    res.render('index.ejs')
+    res.render('index.ejs', {baseUrl: '/'})
   },
 };
