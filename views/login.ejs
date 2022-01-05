@@ -1,7 +1,7 @@
 <%- include('partials/header.ejs') %>
-<%- include('partials/nav-unauth') %>
-
-    <div>
+</header>
+<main id="mainPage">
+    <div id="authForm">
       <h2>Log In</h2>
       <section>
         <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
@@ -34,3 +34,6 @@
     </div>
 </main>
 <%- include('partials/footer.ejs') %>
+
+</body>
+</html>

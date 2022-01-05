@@ -35,14 +35,16 @@ h1, h2 {margin: 0;}
 }
 input {min-width: 0;}
 #mainPage, header, footer {
+  min-width:65%;
     display: flex;
     flex-flow: row wrap; 
     justify-content: space-between;
     align-items: center;
 }
+footer {justify-content: center;}
 #mainPage {
   flex-flow: column;
-  justify-content: center;
+  /* justify-content: center; */
 }
 #summary {width:100%;}
 
@@ -105,10 +107,13 @@ nav li {
   display: inline-block;
   margin: 0 1em;
 }
+#appInfo {margin-top:auto;}
 #buttonMenu{
     display: flex;
     flex-flow: column;
+    margin-bottom: auto;
 }
+#authForm{margin: auto 0;}
 .instructions {
   font-size: 1.4rem;
   font-weight: bold;
@@ -152,6 +157,13 @@ nav li {
     text-align: center;
     line-height: normal;
 }
+#demoSwitch {
+  display:flex;
+  flex-flow: column;
+  padding: 0.5rem 1rem;
+}
+#demo {width: 1.5rem;}
+/* #demoSwitch > label {margin:auto;} */
 /* MENU */
 #mainNav {
   width: 100%; 

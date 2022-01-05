@@ -3,15 +3,17 @@ let memoId = "", time = '', memo = '';
 const memoBox = document.getElementById("newMemo");
 const durationBox = document.getElementById("newDuration");
 
-// update existing session records:
+// display form to update existing work sessions:
 if (document.querySelector(".update")){
 document.querySelectorAll(".update").forEach((el) =>
   el.addEventListener("click", (e) => {
     el.parentElement.classList.add("highlightSelection");
     memoId = e.target.parentNode.dataset.id;
     [memo, time] = parseSession(el.parentElement.innerText);
+    // prefill out the form for updating:
     memoBox.value = memo;
     durationBox.value = time;
+
     document.getElementById("modalFade").classList.remove("hide");
     document.getElementById("updateErrorP").classList.add("hide");
     setTimeout(() => {
@@ -19,7 +21,7 @@ document.querySelectorAll(".update").forEach((el) =>
     }, 900);
   }));
 }
-// handle update form 'submission':
+// handle update form submission:
 if (document.getElementById("updateMemoBtn")) {
   document.getElementById("updateMemoBtn").addEventListener("click", () => { 
       let fetchBodyObj = {};
@@ -45,7 +47,7 @@ if (document.getElementById("updateMemoBtn")) {
       }
     });
 }
-if (document.querySelector(".delete")){
+// handle delete form submission:
   document.querySelectorAll(".delete").forEach((el) =>
     el.addEventListener("click", (e) => {
       if (e.target) {
@@ -57,21 +59,6 @@ if (document.querySelector(".delete")){
       }
     })
   );
-}
-if (document.querySelector(".bartext")){
-  let barData = Array.from(document.querySelectorAll(".bartext")).map(
-    (el) => +el.textContent.slice(0, -5)
-  );
-
-
-  if (barData.length > 0) {
-    setTimeout(() => {
-      d3.selectAll("div.bar")
-        .data(barData)
-        .style("width", (d) => `${(d / Math.max(...barData)) * 60}%`);
-    }, 0);
-  }
-}
 
 function parseSession(sessionStr) {
   return [
