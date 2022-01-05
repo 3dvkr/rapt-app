@@ -36,12 +36,14 @@ h1, h2 {margin: 0;}
 input {min-width: 0;}
 #mainPage, header, footer {
   min-width:65%;
+}
+.centered{
     display: flex;
     flex-flow: row wrap; 
     justify-content: space-between;
     align-items: center;
 }
-footer {justify-content: center;}
+footer {text-align: center;}
 #mainPage {
   flex-flow: column;
   /* justify-content: center; */
@@ -75,7 +77,7 @@ input {
 	justify-content: space-around;
 }
 
-#workForm {width: 90%;}
+#workForm, .record {width: 90%;}
 #workFormMain {
     width: 100%;
     display: grid;
@@ -106,6 +108,12 @@ nav > ul {
 nav li {
   display: inline-block;
   margin: 0 1em;
+}
+.dark {color: var(--dark);}
+.record {
+  outline: 2px var(--dark-accent) dashed;
+  outline-offset: 1ch;
+  margin: 2rem auto;
 }
 #appInfo {margin-top:auto;}
 #buttonMenu{
@@ -291,12 +299,10 @@ nav li {
     #plot {
         width: 60%;
       }
-      li {
+      #mainNav li {
         display: grid;
         grid-template-columns: 30fr 40fr 15fr 15fr;
         gap: 3ch;
-      }
-      #mainNav li {
         display: list-item;
       }
 }
