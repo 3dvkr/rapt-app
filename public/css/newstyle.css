@@ -57,7 +57,7 @@ footer {text-align: center;}
   padding: 1em 2em;
   margin: 0.1em;
 }
-input {
+input[type=text], input[type=password], input[type=email], input[type=number], input[type=date], select {
   padding: 0.5em 1em;
 }
 #enable {
@@ -91,6 +91,7 @@ input {
 }
 
 #countdownP {margin: 0;}
+#demoSwitch {grid-column-start: 3;}
 /* STYLES */
 * {border-radius: 5px;}
 #mainPage {
@@ -125,6 +126,7 @@ nav li {
 .instructions {
   font-size: 1.4rem;
   font-weight: bold;
+  text-align:center;
 }
 .btn {
   border-radius: 5px;
@@ -170,7 +172,7 @@ nav li {
   flex-flow: column;
   padding: 0.5rem 1rem;
 }
-#demo {width: 1.5rem;}
+#demo {width: 3rem;}
 /* #demoSwitch > label {margin:auto;} */
 /* MENU */
 #mainNav {
@@ -284,7 +286,7 @@ nav li {
     #mainNav {
       min-width: 80vw;
     }
-    input {padding: 1em 2em;}
+    input[type=text], input[type=password], input[type=email], input[type=number], input[type=date], select {padding: 1em 2em;}
   }
 @media screen and (min-width: 600px) {
     /* header, footer {padding: 1rem;} */
