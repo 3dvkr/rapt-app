@@ -2,11 +2,16 @@
 <div id="countdown">
     <p id="countdownP" class="">0:00</p>
 </div>
-<form id="workForm">
+<% if (baseUrl==="/main" ) { %>
+    <form id="workForm" method="POST" action="/main">
+<% } else { %>
+    <form id="workForm">
+<% } %>
     <div id="workFormMain">
         <h2 class="instructions">Preset times:</h2>
         <label class="selected btn" for="workSelect">Work</label>
-        <input type="radio" id="workSelect" class="sessionOption" name="sessionType" value="work" checked>
+        <input type="radio" id="workSelect" class="sessionOption" name="sessionType" value="work"
+            checked>
         <label class="btn" for="breakSelect">Break</label>
         <input type="radio" id="breakSelect" class="sessionOption" name="sessionType" value="break">
         <label class="instructions" for="sessionTimer">Set Timer </label>
@@ -25,7 +30,12 @@
             <label for="memo">Add Memo?</label>
             <input type="text" id="memo" name="memo" placeholder="(optional)">
             <section id="buttonMenu">
-                <button type="button" id="submitBtn" class="btn">Submit Session</button>
+                <% if (baseUrl==="/main" ) { %>
+                    <button type="submit" id="submitBtn" class="btn">Submit Session</button>
+                <% } else { %>
+                    <button type="button" id="submitBtn" class="btn">Add Session</button>
+                <% } %>
+                
                 <button type="button" id="closeModal" class="btn">Close without Submitting</button>
             </section>
         </div>

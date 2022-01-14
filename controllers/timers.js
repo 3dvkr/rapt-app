@@ -8,6 +8,7 @@ module.exports = {
     res.render("workSession", {baseUrl: '/main'});
   },
   postWorkSession: (req, res) => {
+    console.log(req.body)
     Timer.create({
       user: req.user.id,
       sessionType: req.body.sessionType,
