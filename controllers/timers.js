@@ -3,12 +3,9 @@ const dayjs = require("dayjs");
 
 module.exports = {
   workSession: (req, res) => {
-    // console.log("main timer route works");
-    // res.send("timer route")
     res.render("workSession", {baseUrl: '/main'});
   },
   postWorkSession: (req, res) => {
-    console.log(req.body)
     Timer.create({
       user: req.user.id,
       sessionType: req.body.sessionType,
@@ -25,7 +22,6 @@ module.exports = {
         user: req.user.id,
         createdAt: { $gte: today },
       });
-      // console.log(today, "getTodaysTimers controller", timersToday);
       res.render("today.ejs", {
         timersToday,
         baseUrl: '/today'
@@ -67,7 +63,6 @@ module.exports = {
         _id: req.params.id,
         user: req.user.id,
       });
-      // console.log("PATCH ATTEMPT", req.body.memo, req.body.duration);
 
       if (req.body.memo) {
         timer.memo = req.body.memo;

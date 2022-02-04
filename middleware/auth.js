@@ -3,14 +3,14 @@ module.exports = {
       if (req.isAuthenticated()) {
         return next();
       } else {
-        res.redirect("/"); // TODO
+        res.redirect("/"); 
       }
     },
     ensureGuest: function (req, res, next) {
       if (!req.isAuthenticated()) {
         return next();
       } else {
-        res.redirect("/main"); // TODO
+        res.redirect("/main"); 
       }
     },
   };
